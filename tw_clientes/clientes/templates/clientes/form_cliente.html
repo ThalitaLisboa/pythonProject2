@@ -1,0 +1,54 @@
+{% extends "clientes/base.html" %}
+{% load meus_filtros %}
+{% block titulo %}
+Cadastro de clientes de clientes
+{% endblock titulo %}
+
+{% block conteudo %}
+<!-- é possível renderizar dessa forma, fazendo com que o html busque as informações do forms e crie o firmulário
+{{ form.as_p }}
+-->
+<!-- a vantagem de criar de forma individual é que podemos alterar layout , odem, ou seja, podemos personalizar-->
+
+    <form method="post">  <!--vai encapsular todos os dados digitados dentro dos inputs e vai enviar para o método inserir_cliente atraves do método request-->
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.nome.errors }}  <!--o form alem de fazer a validação ele ira armazenar no atributo erros-->
+            <label>Nome: </label>
+            {{ form.nome|addclass:'form-control' }}
+
+        </div>
+
+        <div class="form-group">
+            {{ form.sexo.errors }}
+            <label>Sexo: </label>
+            {{ form.sexo|addclass:'form-control' }}
+        </div>
+
+        <div class="form-group">
+            {{ form.data_nascimento.errors }}
+            <label>Data de nascimento: </label>
+            {{ form.data_nascimento|addclass:'form-control' }}
+        </div>
+
+        <div class="form-group">
+            {{ form.email.errors }}
+            <label>Email: </label>
+            {{ form.email|addclass:'form-control' }}
+        </div>
+
+        <div class="form-group">
+            {{ form.profissao.errors }}
+            <label>Profissão: </label>
+            {{ form.profissao|addclass:'form-control' }}
+        </div>
+
+        <div class="form-group">
+            <input type="submit" name="Cadastrar">
+            <!--Esse link dentro do ref vai voltar para a página anterior-->
+            <a href="{{request.META.HTTP_REFERER}}" class="btn btn-primary">Voltar</a>
+        </div>
+
+    </form>
+
+{% endblock conteudo %}
