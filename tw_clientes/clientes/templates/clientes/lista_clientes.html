@@ -1,10 +1,10 @@
 {% extends "clientes/base.html" %}
 
-{% block titulo %}
+{% block title %}
 Listagem de clientes
-{% endblock titulo %}
+{% endblock title %}
 
-{% block conteudo %}
+{% block content %}
     <table class="table">  <!--criando a class ele já usa o estilo do bootstrap-->
         <thead>
             <tr>
@@ -32,5 +32,5 @@ Listagem de clientes
 
 <a href="{% url 'cadastrar_cliente' %}"><button class="btn btn-primary">Cadastrar</button></a>
 
-{% endblock conteudo %}
+{% endblock content %}
 
