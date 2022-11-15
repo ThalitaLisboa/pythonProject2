@@ -17,21 +17,21 @@ def listar_clientes(request):   # request: objeto que vai ter todas os parametro
 # metodo para inserir
 def inserir_cliente(request):
     if request.method == "POST":
-        form = ClienteForm(request.POST)
-        if form.is_valid():
-            #form.save()
-            nome = form.cleaned_data["nome"]
-            sexo = form.cleaned_data["sexo"]
-            data_nascimento = form.cleaned_data["data_nascimento"]
-            email = form.cleaned_data["email"]
-            profissao = form.cleaned_data["profissao"]
+        form_cliente = ClienteForm(request.POST)
+        if form_cliente.is_valid():
+            #form_cliente.save()
+            nome = form_cliente.cleaned_data["nome"]
+            sexo = form_cliente.cleaned_data["sexo"]
+            data_nascimento = form_cliente.cleaned_data["data_nascimento"]
+            email = form_cliente.cleaned_data["email"]
+            profissao = form_cliente.cleaned_data["profissao"]
             cliente_novo = cliente.Cliente(nome=nome, sexo=sexo, data_nascimento=data_nascimento,
                                            email=email, profissao=profissao)
             cliente_service.cadastrar_cliente(cliente_novo)
             return redirect('listar_clientes')
     else:
-        form = ClienteForm()
-    return render(request, 'clientes/form_cliente.html', {'form': form})
+        form_cliente = ClienteForm()
+    return render(request, 'clientes/form_cliente.html', {'form_cliente': form_cliente})
 
 
 #buscar cliente por id

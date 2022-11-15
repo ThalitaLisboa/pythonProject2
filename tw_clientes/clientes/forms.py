@@ -1,5 +1,5 @@
 from django import forms
-from .models import Cliente
+from .models import Cliente, Endereco
 
 # formulario para validar antes de ir para o banco de dados. essa é a validação do backend
 class ClienteForm(forms.ModelForm):
@@ -7,3 +7,8 @@ class ClienteForm(forms.ModelForm):
     class Meta:
         model = Cliente
         fields = ['nome', 'sexo', 'data_nascimento', 'email', 'profissao']
+
+class EnderecoForm(forms.ModelForm):
+    class Meta:
+        model = Endereco
+        fields = ['rua', 'numero', 'complemento', 'bairro', 'cidade', 'pais']
